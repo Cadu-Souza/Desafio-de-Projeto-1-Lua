@@ -36,8 +36,37 @@ local function getBarraProgresso(atributo)
     return resultado
     
 end
+
+local function barra()
+    return "==================================================================================="
+end
+
+local function imprimeCreeper()
+    local linhas = {{"00000000 "}, {"01100110 "}, {"01100110 "}, {"00011000 "}, {"00100100 "}, {"00100100 "}, {"00000000 "}}
+    local fullChar = "▨ "
+    local emptyChar = "▢ "
+    local creeper = ""
+
+    for x = 1, 7, 1 do
+        for y = 1, 8 do
+            local bit = linhas[x][1]:sub(y, y)
+
+            if bit == "0" then
+                creeper = creeper .. fullChar
+            else
+                creeper = creeper .. emptyChar
+            end
+        end
+        
+                creeper = creeper .. "\n|       "
+            
+    end
+
+    return creeper
+end
+
 -- Cartão
-print("======================================================")
+print(barra())
 print("| Nome:  "..nomeMonstro)
 print("| Desc.: "..descricao)
 print("| Emoji: "..emoji)
@@ -51,4 +80,13 @@ print("|     Defesa: "..getBarraProgresso(defesaAtb))
 print("|     Vida:   "..getBarraProgresso(vidaAtb))
 print("|     Veloc:  "..getBarraProgresso(velocidadeAtb))
 print("|     Intel:  "..getBarraProgresso(inteligenciaAtb))
-print("======================================================")
+print(barra())
+print("         ||                                ||         ")
+print("         ||                                ||         ")
+print(barra())
+print("|")
+print("| Curiosidade: O Creeper é uma criatura que ataca furtivamente, \n| sempre espera que sua presa esteja distraida para se aproximar e explodir, \n| dizem que se um raio o atingir ele se torna ainda mais poderoso")
+print("|")
+print("|       "..imprimeCreeper())
+print("|")
+print(barra())
